@@ -1,0 +1,52 @@
+.chatbox {
+  @apply p-2 bg-[#ffffffd8] h-[80vh] w-[90vw] max-w-[1000px] rounded-md text-[#242424] flex flex-col;
+}
+
+.messages {
+  @apply flex flex-col gap-2 overflow-y-auto p-2 grow;
+}
+
+.message-area {
+  @apply flex items-start justify-start mb-2 w-full gap-1;
+}
+
+.message-area.bot::after,
+.message-area.user::after {
+  @apply block w-8 min-w-8 content-[''];
+}
+
+.message-area.user {
+  @apply flex-row-reverse;
+}
+
+.avatar {
+  @apply bg-cover bg-center rounded-full h-10 w-8 min-w-8;
+}
+
+.bot > .avatar {
+  @apply bg-[url('/assets/bot-avatar.svg')];
+}
+
+.user > .avatar {
+  @apply bg-[url('/assets/user-avatar.svg')];
+}
+
+.message {
+  @apply bg-[#ffffffd8] rounded-md p-2;
+}
+
+.user-input-area {
+  @apply flex items-end justify-between  bottom-0 p-2 w-full text-[#ffffffd8];
+}
+
+.textarea {
+  @apply grow outline-none rounded-md resize-none p-2;
+}
+
+button.submit-button {
+  @apply rounded-[0.5rem] border-none py-2 px-2 text-[1rem] font-medium text-[#242424] bg-[#9f9f9fd8] cursor-pointer duration-[200ms] outline-none ml-2;
+}
+
+.submit-button:hover {
+  @apply text-[#ffffffd8] bg-[#242424];
+}

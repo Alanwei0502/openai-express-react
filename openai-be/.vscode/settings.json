@@ -1,0 +1,6 @@
+{
+  "[typescript]": {
+    "editor.maxTokenizationLineLength": 2500,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
