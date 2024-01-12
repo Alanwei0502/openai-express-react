@@ -9,12 +9,12 @@
 }
 
 :root {
-  @apply leading-[1.5] font-normal bg-[#242424] p-[1rem] max-w-[1280px] m-0 antialiased;
+  @apply leading-[1.5] font-normal bg-[#242424] p-[1rem] m-0 antialiased;
   color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
 
 body {
-  @apply m-0 flex min-h-screen justify-center items-center;
+  @apply flex min-h-screen justify-center items-center;
 }

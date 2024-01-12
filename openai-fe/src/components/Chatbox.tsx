@@ -28,24 +28,20 @@ const ChatBox: React.FC<IChatBoxProps> = () => {
     }
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const valueString = JSON.stringify(e.target.value);
+    const countNewlines = (valueString.match(/\\n/g) || []).length;
+    e.target.rows = countNewlines + 1;
+  }
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     const isEnter = e.key === 'Enter';
-    const isBackspace = e.key === 'Backspace';
     const hasShiftKey = e.shiftKey;
     if (!textareaRef.current) return;
 
     if (isEnter && !hasShiftKey) {
+      e.preventDefault();
       handleSubmit();
-    }
-
-    if (isEnter && hasShiftKey) {
-      textareaRef.current.rows += 1;
-    }
-
-    if (isBackspace && !hasShiftKey) {
-      if (textareaRef.current.rows > 1) {
-        textareaRef.current.rows -= 1;
-      }
     }
   }
 
@@ -128,7 +124,7 @@ const ChatBox: React.FC<IChatBoxProps> = () => {
         ))}
       </div>
       <form className='user-input-area' onSubmit={handleSubmit}>
-        <textarea className='textarea' placeholder='ask something...' ref={textareaRef} onKeyDown={handleKeyDown} rows={1} />
+        <textarea className='textarea' placeholder='ask something...' ref={textareaRef} onKeyDown={handleKeyDown} onChange={handleChange} rows={1} />
         <button className="submit-button" type='submit'>Submit</button>
       </form>
     </div>
