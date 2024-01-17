@@ -5,9 +5,9 @@ import apiRouter from './routes';
 import errorMiddleware from './middlewares/error.middleware';
 
 const app = express();
-
+console.log({client: process.env.CLIENT});
 app.use(cors({
-  origin: "*",
+  origin: process.env.CLIENT,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
   optionsSuccessStatus: 204

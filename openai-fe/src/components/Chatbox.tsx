@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Chatbox.css';
 
+const SERVER = import.meta.env.VITE_SERVER;
+
 enum Role {
   user = 'user',
   bot = 'bot'
@@ -55,7 +57,7 @@ const ChatBox: React.FC<IChatBoxProps> = () => {
 
       setMessages(prevMessages => [...prevMessages, { role: Role.user, content: prompt }]);
 
-      const response = await fetch('http://localhost:3000/api/chat', {
+      const response = await fetch(`${SERVER}/api/chat`, {
         method: 'POST',
         headers: {
           Accept: 'application/json, text/plain, */*',
@@ -124,7 +126,7 @@ const ChatBox: React.FC<IChatBoxProps> = () => {
         ))}
       </div>
       <form className='user-input-area' onSubmit={handleSubmit}>
-        <textarea className='textarea' placeholder='ask something...' ref={textareaRef} onKeyDown={handleKeyDown} onChange={handleChange} rows={1} />
+        <textarea className='textarea' placeholder='ask something...' ref={textareaRef} onKeyDown={handleKeyDown} onChange={handleChange} rows={1} required />
         <button className="submit-button" type='submit'>Submit</button>
       </form>
     </div>
