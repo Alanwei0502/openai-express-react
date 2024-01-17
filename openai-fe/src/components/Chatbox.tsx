@@ -43,11 +43,16 @@ const ChatBox: React.FC<IChatBoxProps> = () => {
 
     if (isEnter && !hasShiftKey) {
       e.preventDefault();
-      handleSubmit();
+      sendRequest();
     }
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    sendRequest();
+  }
+
+  const sendRequest = async () => {
     try {
       if (!textareaRef.current) return;
       const prompt = textareaRef.current?.value ?? '';
@@ -102,6 +107,8 @@ const ChatBox: React.FC<IChatBoxProps> = () => {
       console.error(error);
     }
   }
+
+
 
   useEffect(() => {
     const messagesBox = scrollRef.current;

@@ -16,5 +16,5 @@
 }
 
 body {
-  @apply flex min-h-screen justify-center items-center;
+  @apply flex justify-center items-center;
 }
