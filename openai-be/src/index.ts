@@ -9,7 +9,7 @@ const app = express();
 
 app.use(cors(corsOptionsDelegate));
 
-app.get('/healthz', async (_, res) => {
+app.get('/healthz', (_, res) => {
   return res.send(new Date().toISOString() + ' health check');
 });
 app.use(express.json());

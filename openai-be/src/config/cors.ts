@@ -8,12 +8,8 @@ const corsOptionsDelegate: CorsOptionsDelegate = function (
 ){
   let corsOptions: CorsOptions;
   let error = null;
-  const isDomainAllowed = whitelist.indexOf(req.headers['origin']!) !== -1;
-  console.log({
-    isDomainAllowed,
-    whitelist,
-    reqHeadersOrigin: req.headers['origin'],
-  });
+  const isDomainAllowed = whitelist.includes(req.headers['origin']);
+
   if (isDomainAllowed) {
     corsOptions = { origin: true };
   }else{
