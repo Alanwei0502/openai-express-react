@@ -65,6 +65,7 @@ const ChatBox: React.FC<IChatBoxProps> = () => {
       const response = await fetch(`${SERVER}/api/chat`, {
         method: 'POST',
         headers: {
+          origin: window.location.origin,
           Accept: 'application/json, text/plain, */*',
           'Content-Type': 'application/json',
         },
