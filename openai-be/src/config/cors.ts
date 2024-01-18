@@ -8,11 +8,14 @@ const corsOptionsDelegate: CorsOptionsDelegate = function (
 ){
   let corsOptions: CorsOptions;
   let error = null;
-  const isDomainAllowed = whitelist.includes(req.headers['origin']);
+
+  const origin = req.headers['origin'] || '';
+  const isDomainAllowed = whitelist.includes(origin);
   console.log({
     isDomainAllowed,
     whitelist,
-    reqHeaders: req.headers,
+    origin,
+    host: req.headers['host'],
   });
 
   if (isDomainAllowed) {
@@ -22,7 +25,6 @@ const corsOptionsDelegate: CorsOptionsDelegate = function (
     error = new Error('Not allowed by CORS');
   }
 
-  corsOptions.methods = "GET, PUT, PATCH, POST, DELETE, OPTIONS";
   callback(error, corsOptions);
 };
 
