@@ -22,10 +22,9 @@ const corsOptionsDelegate: CorsOptionsDelegate = function (
     corsOptions = { origin: true };
   }else{
     corsOptions = { origin: false };
-    error = new Error('Not allowed by CORS');
   }
 
-  callback(error, corsOptions);
+  callback(null, corsOptions);
 };
 
 export default corsOptionsDelegate;
